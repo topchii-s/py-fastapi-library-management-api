@@ -1,7 +1,7 @@
 from datetime import date
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class BookBase(BaseModel):
@@ -34,4 +34,4 @@ class Author(AuthorBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
-    books: list[Book] = []
+    books: list[Book] = Field(default_factory=list)
